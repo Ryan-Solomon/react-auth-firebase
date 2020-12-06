@@ -1,12 +1,20 @@
 import React, { useRef } from 'react';
+import { useAuthContext } from '../context/authContext';
 
 const SignUp = () => {
+  const { signup } = useAuthContext();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    signup(emailRef.current.value, passwordRef.current.value);
+  };
+
   return (
     <main className='form-container'>
-      <form>
+      <form onSubmit={handleSubmit}>
         <header>
           <h1>Sign Up</h1>
         </header>
