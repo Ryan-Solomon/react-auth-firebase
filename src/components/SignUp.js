@@ -27,6 +27,12 @@ const SignUp = () => {
             type='password'
           />
         </section>
+        <section className='button'>
+          <button type='submit'>Sign Up</button>
+        </section>
+        <section className='prior-user'>
+          <p>Already have an account? Login here</p>
+        </section>
       </form>
     </main>
   );
