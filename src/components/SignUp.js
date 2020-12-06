@@ -7,7 +7,7 @@ const SignUp = () => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const [error, setError] = React.useState('');
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +23,10 @@ const SignUp = () => {
     }
     setLoading(false);
   };
+
+  if (error.length > 1) {
+    return <h1>Oh No</h1>;
+  }
 
   return (
     <main className='form-container'>
