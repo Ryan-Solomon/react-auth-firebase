@@ -6,10 +6,22 @@ const SignUp = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
+  const [error, setError] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    signup(emailRef.current.value, passwordRef.current.value);
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Password don't match");
+    }
+    try {
+      setError('');
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError('Failed to create account');
+    }
+    setLoading(false);
   };
 
   return (
